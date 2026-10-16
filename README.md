@@ -1,69 +1,151 @@
-# CodeIgniter 4 Application Starter
+# ClientFlow CRM
 
-## What is CodeIgniter?
+**ClientFlow CRM** is a web-based Customer Relationship Management (CRM) application built with PHP and CodeIgniter 4. It provides a centralized workspace for managing customer information, monitoring activities, and organizing events.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Features
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- **Dashboard:** View an overview of CRM information.
+- **Customer Management:** Create, view, update, and delete customer records.
+- **Authentication:** Login, registration, and logout functionality.
+- **Activity Feed:** View activity-related information in a dedicated workspace.
+- **Calendar:** Create and view scheduled events with dates, times, and descriptions.
+- **Database Integration:** Store and retrieve application data using a relational database.
+- **Responsive Interface:** Navigate the CRM through a structured application layout.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Tech Stack
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- **Backend:** PHP, CodeIgniter 4
+- **Frontend:** HTML, CSS, JavaScript
+- **Database:** MariaDB / MySQL
+- **Development Tools:** Composer, Git, GitHub, XAMPP
 
-## Installation & updates
+## Project Structure
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+```text
+ClientFlow/
+├── app/
+│   ├── Config/
+│   ├── Controllers/
+│   ├── Models/
+│   └── Views/
+├── public/
+│   └── assets/
+│       ├── css/
+│       └── js/
+├── tests/
+├── writable/
+├── vendor/
+├── .gitignore
+├── composer.json
+└── README.md
+```
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+## Requirements
 
-## Setup
+Before running the project, make sure you have:
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+- PHP 8.2 or a compatible version supported by your installed CodeIgniter release
+- Composer
+- MySQL or MariaDB
+- Required PHP extensions, including `intl` and `mbstring`
+- Git (optional, for version control)
 
-## Important Change with index.php
+## Installation and Setup
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### 1. Clone the repository
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+```bash
+git clone https://github.com/priyankabhrdwaj123-lang/ClientFlow-CRM.git
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+### 2. Open the project folder
 
-## Repository Management
+```bash
+cd ClientFlow-CRM
+```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### 3. Install dependencies
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+```bash
+composer install
+```
 
-## Server Requirements
+### 4. Configure environment settings
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+Copy the `env` file to `.env` in the project root.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+On Windows Command Prompt:
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+```cmd
+copy env .env
+```
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+Open `.env` and configure the application URL and database connection settings according to your local environment.
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Example settings:
+
+```ini
+CI_ENVIRONMENT = development
+app.baseURL = 'http://localhost:8080/'
+
+database.default.hostname = localhost
+database.default.database = your_database_name
+database.default.username = your_database_username
+database.default.password = your_database_password
+database.default.DBDriver = MySQLi
+database.default.port = 3307
+```
+
+**Important:** Replace the database name, username, and password with your own configuration. The port above is an example for environments using MariaDB on port `3307`; use the port configured on your computer.
+
+### 5. Create and configure the database
+
+1. Start your database service.
+2. Create a database for ClientFlow CRM.
+3. Configure the database connection in `.env`.
+4. Create or import the database tables required by the application.
+
+Ensure that the required tables and columns match the models and controllers in the project.
+
+### 6. Run the application
+
+From the project root, execute:
+
+```bash
+php spark serve
+```
+
+Open the application in your browser:
+
+**http://localhost:8080**
+
+## Security Notes
+
+- Do not commit `.env` or other files containing passwords, API keys, or private credentials.
+- Use strong credentials for database access.
+- Configure the production web server to serve the application through the `public/` directory.
+- Do not use development settings or the development server for production hosting.
+
+## Version Control
+
+This project uses Git for version control and GitHub for repository hosting.
+
+To save future changes:
+
+```bash
+git add .
+git commit -m "Describe your changes"
+git push
+```
+
+## Project Status
+
+ClientFlow CRM is an ongoing project. Features and improvements may be added as development continues.
+
+## Author
+
+**Priyanka Bhardwaj**
+
+GitHub: [priyankabhrdwaj123-lang](https://github.com/priyankabhrdwaj123-lang)
+
+Repository: [ClientFlow CRM](https://github.com/priyankabhrdwaj123-lang/ClientFlow-CRM)
